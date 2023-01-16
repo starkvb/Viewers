@@ -18,6 +18,8 @@
 # 2. Setting up our Nginx (Alpine Linux) image w/ step one's output
 #
 
+
+
 # Stage 1: Build the application
 # docker build -t ohif/viewer:latest .
 FROM node:14-slim as builder
