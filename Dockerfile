@@ -16,9 +16,9 @@
 #
 # 1. Building the React application for production
 # 2. Setting up our Nginx (Alpine Linux) image w/ step one's output
+
+
 #
-
-
 # Stage 1: Build the application
 # docker build -t ohif/viewer:latest .
 FROM node:14-slim as builder
@@ -46,8 +46,6 @@ RUN yarn install --verbose
 
 ENV PATH /usr/src/app/node_modules/.bin:$PATH
 ENV QUICK_BUILD true
-# ENV GENERATE_SOURCEMAP=false
-# ENV REACT_APP_CONFIG=config/default.js
 
 RUN yarn run build
 
@@ -60,6 +58,7 @@ COPY .docker/Viewer-v2.x /etc/nginx/conf.d
 COPY .docker/Viewer-v2.x/entrypoint.sh /usr/src/
 RUN chmod 777 /usr/src/entrypoint.sh
 COPY --from=builder /usr/src/app/platform/viewer/dist /usr/share/nginx/html
+COPY app-config.js /usr/share/nginx/html/app-config.js
 EXPOSE 80
 EXPOSE 443
 ENTRYPOINT ["/usr/src/entrypoint.sh"]
