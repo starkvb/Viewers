@@ -2,7 +2,7 @@ name: deploy_services
 on:
   push:
     branches:
-      - actions
+      - master
   pull_request: {}
 
 jobs:
