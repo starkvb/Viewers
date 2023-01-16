@@ -16,6 +16,8 @@
 #
 # 1. Building the React application for production
 # 2. Setting up our Nginx (Alpine Linux) image w/ step one's output
+
+
 #
 # Stage 1: Build the application
 # docker build -t ohif/viewer:latest .
