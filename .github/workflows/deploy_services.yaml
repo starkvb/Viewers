@@ -15,6 +15,9 @@ jobs:
       - name: Build OHIF
         run: docker-compose build
 
+      - name: remove old containers
+        run: docker-compose down
+
       - name: Deploy OHIF and orthanc
         run: docker-compose up -d --force-recreate
 
